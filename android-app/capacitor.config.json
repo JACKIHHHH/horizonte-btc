@@ -1,0 +1,12 @@
+{
+  "appId": "com.garavide.horizontebtc",
+  "appName": "Horizonte BTC",
+  "webDir": "www",
+  "server": {
+    "url": "https://btc.bodyboardincartago.com",
+    "androidScheme": "https",
+    "allowNavigation": ["btc.bodyboardincartago.com", "garavide.cloudflareaccess.com"],
+    "errorPath": "index.html"
+  },
+  "android": { "backgroundColor": "#000000", "allowMixedContent": false }
+}

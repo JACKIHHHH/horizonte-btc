@@ -1,0 +1,14 @@
+{
+  "name": "horizonte-btc-android",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Envoltorio Android (Capacitor) de https://btc.bodyboardincartago.com",
+  "scripts": {
+    "sync": "cap sync android"
+  },
+  "dependencies": {
+    "@capacitor/android": "^7.6.10",
+    "@capacitor/cli": "^7.6.10",
+    "@capacitor/core": "^7.6.10"
+  }
+}
