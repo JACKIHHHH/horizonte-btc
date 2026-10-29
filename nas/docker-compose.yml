@@ -1,0 +1,22 @@
+# Alternativa a GitHub Actions: calibrador en el NAS (Portainer → Stacks).
+# Copia la carpeta del proyecto al NAS y ajusta la ruta del volumen y las variables.
+services:
+  calibrador:
+    image: node:22-alpine
+    container_name: horizonte-calibrador
+    restart: unless-stopped
+    working_dir: /app
+    volumes:
+      - /volume1/docker/horizonte-btc:/app
+    environment:
+      BASE: https://tu-dominio
+      PUBLISH_TOKEN: cambia-esto
+      TZ: UTC
+    # Calibra cada día a las 00:35 UTC; los lunes también ejecuta el backtest.
+    command: >
+      sh -c "npm ci --omit=optional && while true; do
+        now=$$(date +%s); next=$$(date -d \"$$(date +%Y-%m-%d) 00:35\" +%s 2>/dev/null || echo 0);
+        [ $$next -le $$now ] && next=$$((next + 86400));
+        sleep $$((next - now));
+        if [ $$(date +%u) = 1 ]; then npx tsx scripts/calibrar.ts --backtest; else npx tsx scripts/calibrar.ts; fi;
+      done"

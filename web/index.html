@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Horizonte BTC</title>
+  <meta name="description" content="Escenarios de precio de Bitcoin a partir de mercado, derivados, on-chain, macro y lo que pasa en el mundo. Rangos de probabilidad con su precisión histórica publicada." />
+  <meta name="theme-color" content="#f5f5f7" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
+  <link rel="icon" href="/icono.svg" type="image/svg+xml" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="top">
+    <div class="top-inner">
+      <a class="brand" href="/" aria-label="Horizonte BTC, inicio">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17c4-.2 7-2.6 9-7 2 4.4 5 6.8 9 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M3 17c4 .9 7 .9 9 .2 2 .7 5 .7 9-.2" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" opacity=".6"/></svg>
+        Horizonte BTC
+      </a>
+      <nav class="segmented" aria-label="Secciones" id="nav-top"></nav>
+      <div class="account" id="account"></div>
+    </div>
+  </header>
+  <div id="banner" role="status"></div>
+  <main class="shell" id="app" tabindex="-1"></main>
+  <nav class="tabbar" aria-label="Secciones" id="nav-bottom"></nav>
+  <script type="module" src="./main.ts"></script>
+</body>
+</html>
