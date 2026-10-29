@@ -1,0 +1,23 @@
+# Calibración diaria y backtest semanal (gratis en repositorios de GitHub).
+# Secrets del repositorio: BASE (https://tu-dominio) y PUBLISH_TOKEN (el mismo que en Wrangler).
+name: Calibrar
+on:
+  schedule:
+    - cron: '35 0 * * *'   # cada día, 00:35 UTC (tras el cierre diario)
+  workflow_dispatch:
+jobs:
+  calibrar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - run: npm ci
+      - name: Calibrar (los lunes, con backtest)
+        env:
+          BASE: ${{ secrets.BASE }}
+          PUBLISH_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
+        run: |
+          if [ -z "$PUBLISH_TOKEN" ] || [ -z "$BASE" ]; then echo "Faltan los secrets BASE y PUBLISH_TOKEN; no se calibra."; exit 0; fi
+          if [ "$(date -u +%u)" = "1" ]; then npx tsx scripts/calibrar.ts --backtest; else npx tsx scripts/calibrar.ts; fi
