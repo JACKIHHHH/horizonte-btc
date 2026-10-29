@@ -1,0 +1,16 @@
+*.jks
+*.log
+.dev.vars
+.publish_token
+.wrangler
+android-app/android/.gradle
+android-app/android/app/build
+android-app/android/build
+android-app/node_modules
+dist
+horizonte-payload.b64
+horizonte-web.b64
+horizonte-worker.b64
+keystore-pass.txt
+node_modules
+*.b64
